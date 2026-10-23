@@ -1,0 +1,5 @@
+# Pinned so CI, contributors, and local dev all build with the same
+# compiler (matching the project's pin-everything convention, Issues.md §0).
+[toolchain]
+channel = "1.97.0"
+components = ["rustfmt", "clippy"]
