@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+
+jobs:
+  ci:
+    name: fmt, clippy, test, doc
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      # The pinned toolchain (and its rustfmt/clippy components) come from
+      # rust-toolchain.toml; `rustup show` installs it if missing.
+      - name: Install toolchain
+        run: rustup show
+
+      - name: Cache cargo build
+        uses: Swatinem/rust-cache@v2
+
+      - name: Format
+        run: cargo fmt --all --check
+
+      - name: Guard (core must not depend on gpui)
+        run: ./scripts/check-core-no-gpui.sh
+
+      - name: Lint
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+
+      - name: Test
+        run: cargo test --workspace --locked
+
+      # Doc warnings are surfaced in the log but deliberately not fatal.
+      - name: Doc
+        run: cargo doc --workspace --no-deps --locked

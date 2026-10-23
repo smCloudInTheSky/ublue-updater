@@ -33,9 +33,9 @@ These are **invariants** — PRs violating them are rejected:
   - Create `crates/core` (`ublue-updater-core`) and `crates/cli` (`ublue-updater-cli`) as empty lib/bin skeletons.
   - Add a CI guard that `crates/core` never depends on gpui (simplest: grep check in CI, or `cargo tree -p ublue-updater-core | (!) grep gpui`).
 - **Acceptance:**
-  - ☐ `cargo build --workspace` and `cargo test --workspace` pass from a clean clone.
-  - ☐ `cargo tree -p ublue-updater-core` contains no `gpui`.
-  - ☐ Root `Design.md` + this file remain at repo root.
+  - ☒ `cargo build --workspace` and `cargo test --workspace` pass from a clean clone.
+  - ☒ `cargo tree -p ublue-updater-core` contains no `gpui`.
+  - ☒ Root `Design.md` + this file remain at repo root.
 
 ### M0-02 · CI pipeline *(S)*
 - **Depends on:** M0-01
