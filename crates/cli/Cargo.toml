@@ -1,0 +1,8 @@
+[package]
+name = "ublue-updater-cli"
+version.workspace = true
+edition.workspace = true
+description = "Headless debug CLI for ublue-updater-core (see Issues.md M1-11)"
+publish = false
+
+[dependencies]
