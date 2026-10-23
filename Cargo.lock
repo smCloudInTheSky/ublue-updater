@@ -5,3 +5,11 @@ version = 4
 [[package]]
 name = "ublue-updater"
 version = "0.1.0"
+
+[[package]]
+name = "ublue-updater-cli"
+version = "0.1.0"
+
+[[package]]
+name = "ublue-updater-core"
+version = "0.1.0"

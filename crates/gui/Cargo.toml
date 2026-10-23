@@ -1,0 +1,8 @@
+[package]
+name = "ublue-updater"
+version.workspace = true
+edition.workspace = true
+description = "gpui GUI panel for managing updates on Universal Blue images"
+publish = false
+
+[dependencies]

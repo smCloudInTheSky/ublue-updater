@@ -1,0 +1,8 @@
+[package]
+name = "ublue-updater-core"
+version.workspace = true
+edition.workspace = true
+description = "Headless core for ublue-updater: domain model, providers, orchestration"
+publish = false
+
+[dependencies]
